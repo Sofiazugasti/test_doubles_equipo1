@@ -1,0 +1,26 @@
+{
+  "name": "test_doubles_equipo1",
+  "version": "1.0.0",
+  "description": "- Estefanía Antonio Villaseca\r - Miranda Eugenia Colorado Arróniz\r - Alejandro Kong Montoya\r - Sofía Zugasti Delgado",
+  "main": "index.js",
+  "directories": {
+    "test": "jest"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sofiazugasti/test_doubles_equipo1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sofiazugasti/test_doubles_equipo1/issues"
+  },
+  "homepage": "https://github.com/Sofiazugasti/test_doubles_equipo1#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
