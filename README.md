@@ -6,6 +6,7 @@
 - Alejandro Kong Montoya
 - Miranda Eugenia Colorado Arróniz
 
+
 ---
 
 ## 📋 Resumen
@@ -31,6 +32,8 @@ Uno de los principales retos fue identificar qué atributos mínimos debía tene
 
 ## Tabla de resumen de aporte individual
 
+## ✅ ¿Qué Test Doubles se implementaron?
+
 | Tipo     | Archivo                        | ¿Pasa pruebas? |
 |----------|--------------------------------|----------------|
 | Dummy    | `tests/dummy/dummy.test.js`    | ✅             |
@@ -42,3 +45,4 @@ Uno de los principales retos fue identificar qué atributos mínimos debía tene
 ---
 
 ## Captura del resultado del 'jest --coverage'
+
