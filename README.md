@@ -56,4 +56,6 @@ El principal problema fue confundir el uso de spies con mocks. Al principio usá
 ---
 
 ## Captura del resultado del 'jest --coverage'
+![image](https://github.com/user-attachments/assets/eaa04bb1-837c-4b42-896e-594cc2d4c6b3)
+
 
