@@ -1,6 +1,6 @@
 # Test Doubles - Equipo 1
 
-## 🧠 Integrantes:
+## Integrantes:
 - Estefanía Antonio Villaseca  
 - Sofia Zugasti Delgado
 - Alejandro Kong Montoya
@@ -9,7 +9,7 @@
 
 ---
 
-## 📋 Resumen
+## Resumen
 
 Implementamos los cinco tipos de Test Doubles utilizando Jest: **Dummy, Stub, Mock, Fake y Spy**, aplicando ejemplos reales y personalizados a partir de nuestro proyecto.
 
@@ -34,7 +34,8 @@ El Fake que desarrollamos fue un servicio de base de datos simulado con datos re
 🟣 Spy
 Usamos Spies con jest.fn() para observar funciones como getApplication y saveApplication, con el fin de verificar si se ejecutaban correctamente durante el proceso de postulación. Esto nos permitió confirmar que ciertas acciones no ocurrían cuando no debían, como evitar duplicaciones. Aprendimos que los Spies son ideales para confirmar el comportamiento indirecto de funciones dentro del flujo.
 
-¿Qué aprendimos al integrarlos?
+## ¿Qué aprendimos al integrarlos?
+
 🟠 Dummy
 Aprendimos que un Dummy no necesita lógica interna, solo cumplir con la forma de un objeto real. Nos ayudó a enfocarnos en probar la clase principal sin preocuparnos por dependencias irrelevantes en ese momento.
 
