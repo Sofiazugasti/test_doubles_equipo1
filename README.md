@@ -45,13 +45,13 @@ El principal problema fue confundir el uso de spies con mocks. Al principio usá
 
 ## ✅ ¿Qué Test Doubles se implementaron?
 
-| Tipo     | Archivo                        | ¿Pasa pruebas? |
-|----------|--------------------------------|----------------|
-| Dummy    | `tests/dummy/dummy.test.js`    | ✅             |
-| Stub     | `tests/stub/stub.test.js`      | ✅             |
-| Mock     | `tests/mock/mock.test.js`      | ✅             |
-| Fake     | `tests/fake/fake.test.js`      | ✅             |
-| Spy      | `tests/spy/spy.test.js`        | ✅             |
+| Encargado| Tipo     | Archivo                        | ¿Pasa pruebas? |
+|----------|----------|--------------------------------|----------------|
+| Miranda  |  Dummy   | `tests/dummy/dummy.test.js`    | ✅             |
+| Sofia    | Stub     | `tests/stub/stub.test.js`      | ✅             |
+| Kong     | Mock     | `tests/mock/mock.test.js`      | ✅             |
+|Estefania | Fake     | `tests/fake/fake.test.js`      | ✅             |
+| Kong     | Spy      | `tests/spy/spy.test.js`        | ✅             |
 
 ---
 
