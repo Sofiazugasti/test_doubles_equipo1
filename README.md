@@ -19,37 +19,54 @@ Implementamos los cinco tipos de Test Doubles utilizando Jest: **Dummy, Stub, Mo
 ## ¿Qué Test Doubles se implementaron?
 En el proyecto implementamos los cinco tipos de Test Doubles: Dummy, Stub, Mock, Fake y Spy. Para el caso del Dummy, creamos una clase sencilla que solo cumple con la interfaz mínima requerida por el sistema, sin agregar lógica adicional. En específico, usamos un Dummy para simular una organización al crear un proyecto solidario, permitiendo así enfocar la prueba únicamente en la lógica del proyecto.
 
-Para los mock test que se implementaron simulan la lógica de una base de datos, incluyendo métodos como hasDuplicateApplication, validateFields y saveApplication. Estos métodos permitieron simular distintos comportamientos posibles sin acceder a una base de datos real.
+🟠 Dummy
+Utilizamos un Dummy para simular una organización al momento de crear un proyecto solidario. Este objeto no tenía lógica interna, pero cumplía con la estructura mínima requerida por el sistema. Esto nos permitió centrarnos en probar la lógica del proyecto sin necesidad de definir toda la lógica de la organización. Aprendimos que los Dummies son útiles cuando solo se necesita "rellenar" un parámetro sin afectar el flujo de la prueba.
 
-Se usaron spies mediante jest.fn() para espiar funciones como getApplication y saveApplication, con el fin de verificar que se llamaran (o no) en los momentos esperados dentro del flujo de aplicación.
+🟡 Stub
+Creamos un Stub que devolvía valores específicos como si consultara una base de datos, por ejemplo, cuando simulamos que ya existía un proyecto con el mismo nombre. Gracias a esto, pudimos probar cómo responde el sistema ante condiciones controladas. Esto nos ayudó a entender cómo los Stubs son ideales para validar rutas específicas de ejecución sin lógica adicional.
 
-Se implementaron Stubs también con métodos simulados para devolver valores predetermiandos para simular un comportamiento de la base de datos, en este caso el mock devuelve un proyecto existente con el mismo nombre y como respuesta, el servicio no inserta el nuevo proyecto porque está repetido. 
+🔵 Mock
+Implementamos un Mock para simular la lógica de una base de datos, con funciones como hasDuplicateApplication, validateFields y saveApplication. Con esto pudimos verificar si se llamaban correctamente, con los parámetros esperados, y cuántas veces. Aprendimos que los Mocks nos permiten validar interacciones específicas y son esenciales cuando queremos comprobar cómo se comunican nuestras clases entre sí.
 
-## ¿Qué aprendieron al integrarlos?
-Al integrar el Dummy, aprendimos que muchas veces no es necesario tener implementaciones completas de todas las dependencias para poder probar una clase o función. Los Dummies nos ayudaron a simplificar las pruebas y a centrarnos en el comportamiento de la clase principal, sin preocuparnos por detalles de otras clases. Además, entendimos mejor la importancia de aislar las pruebas para que sean más claras y fáciles de mantener.
+🟢 Fake
+El Fake que desarrollamos fue un servicio de base de datos simulado con datos reales en memoria. Implementaba una lógica funcional (por ejemplo, getProjectById) y fue clave para probar si había cupo disponible en un proyecto solidario sin conectarnos a Supabase. Esto nos enseñó que los Fakes son útiles cuando queremos ejecutar pruebas más completas, sin necesidad de infraestructura externa.
 
-Aprendimos que los mocks son herramientas útiles para probar la lógica de negocio de forma aislada, permitiéndonos simular distintos escenarios de validación de formularios y duplicados sin necesidad de un entorno real.
+🟣 Spy
+Usamos Spies con jest.fn() para observar funciones como getApplication y saveApplication, con el fin de verificar si se ejecutaban correctamente durante el proceso de postulación. Esto nos permitió confirmar que ciertas acciones no ocurrían cuando no debían, como evitar duplicaciones. Aprendimos que los Spies son ideales para confirmar el comportamiento indirecto de funciones dentro del flujo.
 
-Aprendimos que los spies permiten verificar las interacciones entre funciones, lo cual es útil para asegurarnos de que no se estén ejecutando acciones innecesarias, como guardar una aplicación duplicada.
+¿Qué aprendimos al integrarlos?
+🟠 Dummy
+Aprendimos que un Dummy no necesita lógica interna, solo cumplir con la forma de un objeto real. Nos ayudó a enfocarnos en probar la clase principal sin preocuparnos por dependencias irrelevantes en ese momento.
 
- Al realizar las pruebas stub reforzamos y comprendimos mejor que no siempre se necesita conectarte a una base de datos real para probar si tu código funciona. 
+🟡 Stub
+Al usar Stubs, entendimos cómo simular respuestas específicas para probar distintos caminos de ejecución sin conectarnos a sistemas externos. Fue útil para simular proyectos duplicados o respuestas controladas.
 
+🔵 Mock
+Con los Mocks vimos cómo validar que una función haya sido llamada correctamente. Aprendimos a verificar interacciones entre objetos y asegurar que se llamen funciones clave bajo ciertas condiciones.
 
+🟢 Fake
+El Fake nos permitió simular un servicio funcional (como una base de datos en memoria) con una implementación realista. Comprendimos que es ideal para pruebas más completas sin usar servicios externos.
+
+🟣 Spy
+Los Spies nos enseñaron a observar si ciertas funciones se ejecutan (o no) durante el flujo. Aprendimos que es útil cuando queremos verificar interacciones sin necesidad de reemplazar toda la lógica.
 
 ## ¿Qué problemas enfrentaron y cómo los resolvieron?
-Uno de los principales retos fue identificar qué atributos mínimos debía tener el Dummy para que la clase ProyectoSolidario funcionara correctamente en la prueba. Al principio, olvidamos agregar algún atributo requerido y la prueba fallaba, pero revisando el código, ajustamos el Dummy para que cumpliera con lo necesario. 
+🟠 Dummy
+Tuvimos problemas al principio por no incluir los atributos mínimos requeridos en el Dummy, lo cual causaba fallos. Lo resolvimos revisando la clase principal y ajustando el Dummy con lo esencial.
 
-Un problema fue que inicialmente olvidamos que las funciones simuladas debían devolver promesas (por ser asincrónicas). Esto causaba errores inesperados en las pruebas. Lo solucionamos usando correctamente jest.fn().mockResolvedValue() en las funciones necesarias.
+🟡 Stub
+Nos equivocamos al no usar mockResolvedValue() para funciones asíncronas, lo que causaba errores. Aprendimos que incluso stubs deben imitar correctamente el comportamiento real, incluyendo promesas.
 
-El principal problema fue confundir el uso de spies con mocks. Al principio usábamos spies donde realmente necesitábamos simular comportamiento. Lo resolvimos diferenciando los casos de prueba: cuando necesitábamos solo observar llamadas usamos spies, y cuando queríamos simular lógica completa, usamos mocks.
+🔵 Mock
+Al inicio confundimos los mocks con los spies y usábamos mocks donde solo queríamos observar. Lo resolvimos diferenciando cuándo debíamos validar llamadas y cuándo simular comportamiento.
 
-Otro reto fue entender las diferencias entre los tipos de pruebas double porque son conceptos muy parecidos y nos costó entender cuál es el tipo adecuado para cierta prueba. 
+🟢 Fake
+El reto fue entender que un Fake debe tener lógica realista, pero no completa. Nos ayudó a practicar cómo diseñar servicios con dependencias inyectadas y simular escenarios más complejos sin conectarnos a Supabase.
 
-
+🟣 Spy
+Fallamos al principio en entender que los spies no devuelven valores automáticamente. Lo resolvimos combinando jest.fn() con funciones predefinidas y entendiendo cuándo es mejor un spy que un stub o mock.
 
 ## Tabla de resumen de aporte individual
-
-## ✅ ¿Qué Test Doubles se implementaron?
 
 | Encargado| Tipo     | Archivo                        | ¿Pasa pruebas? |
 |----------|----------|--------------------------------|----------------|
