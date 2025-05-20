@@ -23,12 +23,16 @@ Para los mock test que se implementaron simulan la lógica de una base de datos,
 
 Se usaron spies mediante jest.fn() para espiar funciones como getApplication y saveApplication, con el fin de verificar que se llamaran (o no) en los momentos esperados dentro del flujo de aplicación.
 
+Se implementaron Stubs también con métodos simulados para devolver valores predetermiandos para simular un comportamiento de la base de datos, en este caso el mock devuelve un proyecto existente con el mismo nombre y como respuesta, el servicio no inserta el nuevo proyecto porque está repetido. 
+
 ## ¿Qué aprendieron al integrarlos?
 Al integrar el Dummy, aprendimos que muchas veces no es necesario tener implementaciones completas de todas las dependencias para poder probar una clase o función. Los Dummies nos ayudaron a simplificar las pruebas y a centrarnos en el comportamiento de la clase principal, sin preocuparnos por detalles de otras clases. Además, entendimos mejor la importancia de aislar las pruebas para que sean más claras y fáciles de mantener.
 
 Aprendimos que los mocks son herramientas útiles para probar la lógica de negocio de forma aislada, permitiéndonos simular distintos escenarios de validación de formularios y duplicados sin necesidad de un entorno real.
 
 Aprendimos que los spies permiten verificar las interacciones entre funciones, lo cual es útil para asegurarnos de que no se estén ejecutando acciones innecesarias, como guardar una aplicación duplicada.
+
+ Al realizar las pruebas stub reforzamos y comprendimos mejor que no siempre se necesita conectarte a una base de datos real para probar si tu código funciona. 
 
 
 
@@ -38,6 +42,8 @@ Uno de los principales retos fue identificar qué atributos mínimos debía tene
 Un problema fue que inicialmente olvidamos que las funciones simuladas debían devolver promesas (por ser asincrónicas). Esto causaba errores inesperados en las pruebas. Lo solucionamos usando correctamente jest.fn().mockResolvedValue() en las funciones necesarias.
 
 El principal problema fue confundir el uso de spies con mocks. Al principio usábamos spies donde realmente necesitábamos simular comportamiento. Lo resolvimos diferenciando los casos de prueba: cuando necesitábamos solo observar llamadas usamos spies, y cuando queríamos simular lógica completa, usamos mocks.
+
+Otro reto fue entender las diferencias entre los tipos de pruebas double porque son conceptos muy parecidos y nos costó entender cuál es el tipo adecuado para cierta prueba. 
 
 
 
